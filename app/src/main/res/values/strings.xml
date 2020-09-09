@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">The Simplest Diary</string>
+
+    <string name="moodAwful">Awful</string>
+    <string name="moodBad">Bad</string>
+    <string name="moodModerate">Moderate</string>
+    <string name="moodGood">Good</string>
+    <string name="moodExcellent">Excellent</string>
+
+    <string name="daysSkipped">Days skipped: %d</string>
+
+    <string name="itsYourFirstRecord">It\'s your first record</string>
+</resources>
