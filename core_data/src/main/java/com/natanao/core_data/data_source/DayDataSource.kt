@@ -12,16 +12,30 @@ import kotlin.random.nextInt
 class DayDataSource : DayRepository {
 
     private val days: MutableList<Day> = mutableListOf<Day>().apply {
+        val emojisList = listOf(
+            "\uD83D\uDCAF",
+            "\uD83D\uDC95",
+            "\uD83D\uDE1D",
+            "\uD83C\uDF1A",
+            "\uD83D\uDE0E",
+            "☺",
+            "\uD83D\uDE48",
+            "\uD83D\uDE0D"
+        )
         val currentDate = LocalDate.now(ZoneId.systemDefault())
         val random = Random
 
         var uniqueActionId = 0
 
         fun getRandomString(length: Int) : String {
-            val allowedChars = ('A'..'Z') + ('a'..'z') + ' '
-            return (1..length)
-                .map { allowedChars.random() }
-                .joinToString("")
+            val upperCaseLetters = ('A'..'Z')
+            val lowerCaseLetters = ('a'..'z')
+            val stringBuilder = StringBuilder().append(upperCaseLetters.random())
+            repeat(length-1) {
+                stringBuilder.append(lowerCaseLetters.random())
+            }
+
+            return stringBuilder.toString()
         }
 
         repeat(50) { i ->
@@ -32,7 +46,8 @@ class DayDataSource : DayRepository {
                     repeat(random.nextInt(1..5)) {
                         add(UniqueAction(
                             uniqueActionId++,
-                            getRandomString(random.nextInt(3..10))))
+                            getRandomString(random.nextInt(3..10)),
+                            emojisList.random()))
                     }
                 }
             ))

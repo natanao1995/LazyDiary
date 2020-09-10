@@ -5,16 +5,27 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <androidx.emoji.widget.EmojiTextView
+        android:id="@+id/iconText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="🧼" />
+
     <TextView
         android:id="@+id/actionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingStart="4dp"
         android:paddingTop="4dp"
         android:paddingEnd="16dp"
         android:paddingBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iconText"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="cooking" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ abstract class ActionModel : EpoxyModelWithHolder<ActionModel.Holder>() {
     lateinit var action: Action
 
     override fun bind(holder: Holder) {
+        holder.view.iconText.text = action.textIcon
         holder.view.actionText.text = action.title
     }
 

@@ -25,16 +25,19 @@ sealed class Action(
 
 sealed class Action(
     open val id: Int,
-    open val title: String
+    open val title: String,
+    open val textIcon: String
 ) {
     data class UniqueAction(
         override val id: Int,
-        override val title: String
-    ) : Action(id, title)
+        override val title: String,
+        override val textIcon: String
+    ) : Action(id, title, textIcon)
 
     data class RepeatableAction(
         override val id: Int,
         override val title: String,
+        override val textIcon: String,
         val parentId: Int
-    ) : Action(id, title)
+    ) : Action(id, title, textIcon)
 }
