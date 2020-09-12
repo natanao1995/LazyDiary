@@ -14,4 +14,3 @@ abstract class FirstRecordModel : EpoxyModelWithHolder<FirstRecordModel.Holder>(
 
     class Holder : KotlinEpoxyHolder()
 }
-

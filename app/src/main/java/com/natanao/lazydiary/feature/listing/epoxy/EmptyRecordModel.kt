@@ -3,8 +3,8 @@ package com.natanao.lazydiary.feature.listing.epoxy
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
-import com.natanao.core_domain.entity.RecordItem.EmptyRecord
 import com.natanao.lazydiary.R
+import com.natanao.lazydiary.feature.listing.model.RecordItemUiModel
 import com.natanao.lazydiary.general.KotlinEpoxyHolder
 import kotlinx.android.synthetic.main.listing_empty_record_item.view.*
 
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.listing_empty_record_item.view.*
 abstract class EmptyRecordModel : EpoxyModelWithHolder<EmptyRecordModel.Holder>() {
 
     @EpoxyAttribute
-    lateinit var emptyRecord: EmptyRecord
+    lateinit var emptyRecord: RecordItemUiModel.EmptyRecordUiModel
 
     override fun bind(holder: Holder) {
         holder.view.skippedDaysText.text =
@@ -21,4 +21,3 @@ abstract class EmptyRecordModel : EpoxyModelWithHolder<EmptyRecordModel.Holder>(
 
     class Holder : KotlinEpoxyHolder()
 }
-

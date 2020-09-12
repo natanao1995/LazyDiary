@@ -4,17 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.natanao.core_domain.entity.RecordItem
 import com.natanao.core_domain.interactor.ListingInteractor
+import com.natanao.lazydiary.feature.listing.model.RecordItemUiModel
+import com.natanao.lazydiary.feature.listing.model.toUiModel
 import kotlinx.coroutines.launch
+import org.threeten.bp.format.DateTimeFormatter
 
 class ListingViewModel(
     private val listingInteractor: ListingInteractor
 ) : ViewModel() {
 
-    private val _recordsLiveData = MutableLiveData<List<RecordItem>>()
+    private val _recordsLiveData = MutableLiveData<List<RecordItemUiModel>>()
 
-    val recordsLiveData: LiveData<List<RecordItem>>
+    val recordsLiveData: LiveData<List<RecordItemUiModel>>
         get() = _recordsLiveData
 
     init {
@@ -23,7 +25,10 @@ class ListingViewModel(
 
     private fun updateRecordsList() {
         viewModelScope.launch {
-            _recordsLiveData.postValue(listingInteractor.getRecords())
+            val dateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, d MMMM")
+            _recordsLiveData.postValue(
+                listingInteractor.getRecords().map { it.toUiModel(dateTimeFormatter) }
+            )
         }
     }
 }
